@@ -1,0 +1,24 @@
+# (Biên dịch bởi Galaxy Education) Senick đang cố gắng tìm Burleous Majoris khó bắt!
+# Nhưng anh ấy không biết một Burleous Majoris sẽ to lớn như thế nào ...
+# Tìm kích thước trung bình của quần thể burl này để sử dụng làm đường cơ sở!
+
+# Hàm này trả về kích thước trung bình của tất cả các burl trong một mảng.
+def averageSize(burls):
+    sum = sumSize(burls)
+    # Hãy nhớ rằng trung bình là tổng của các phần chia cho số tiền!
+    return sum / burls.length
+
+# Hàm này sẽ trả về tổng của tất cả các kích thước burls.
+def sumSize(burls):
+    # Thực hiện hàm sum bằng cách sử dụng burls 'size':
+    totalSize = 0
+    for burl in burls:
+        totalSize += burl.size
+    return totalSize
+    pass
+
+while True:
+    enemies = hero.findEnemies()
+    hero.say(averageSize(enemies))
+    
+    
