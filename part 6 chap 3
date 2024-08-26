@@ -1,0 +1,20 @@
+# Yetis bao vây chúng ta và chúng ta cần phải tiêu diệt chúng.
+# May mắn thay, pháp sư đã có thời gian để niệm phép ngủ.
+# Anh hùng của bạn có thể hấp thụ sức mạnh sinh lực của Yetis khi chúng bị tiêu diệt.
+# Tiêu diệt chúng theo thứ tự từ yếu nhất đến mạnh nhất.
+
+# Pháp sư đã sắp xếp kẻ thù, nhưng theo thứ tự từ mạnh nhất đến yếu nhất.
+wizard = hero.findNearest(hero.findFriends())
+yetis = wizard.findEnemies()
+
+# Bạn cần lặp qua danh sách Yetis theo thứ tự ngược lại với 'for-loop'.
+# Giá trị bắt đầu nên là 'len(yetis) - 1'.
+# Lặp khi chỉ số lớn hơn -1.
+# Sử dụng bước lặp ngược -1.
+index = len(yetis) - 1
+while index >= 0:
+    # Tấn công mỗi kẻ thù khi sức khỏe của chúng lớn hơn 0.
+    while yetis[index].health > 0:
+        hero.attack(yetis[index])
+    # Giảm chỉ số để tiếp tục lặp ngược.
+    index -= 1
