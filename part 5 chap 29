@@ -1,0 +1,17 @@
+# Mảng này chứa từng vị trí của chuồng.
+penPositions = [{'x': 20, 'y': 24}, {'x': 28, 'y': 24}, {'x': 36, 'y': 24}, {'x': 44, 'y': 24}, {'x': 52, 'y': 24}]
+penOccupants = ['empty', 'empty', 'empty', 'empty', 'empty']
+friends = hero.findFriends()
+
+for deerIndex in range(len(friends)):
+    reindeer = friends[deerIndex]
+
+    for penIndex in range(len(penPositions)):
+        penPos = penPositions[penIndex]
+
+        if penPos.x == reindeer.pos.x and penPos.y == reindeer.pos.y:
+            penOccupants[penIndex] = reindeer.id
+            break
+
+for occIndex in range(len(penOccupants)):
+    hero.say("Pen " + occIndex + " is " + penOccupants[occIndex])
