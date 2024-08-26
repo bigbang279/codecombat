@@ -1,0 +1,39 @@
+# Đây là mảng các vị trí của chuồng
+penPositions = [{"x": 20, "y": 24}, {"x": 28, "y": 24}, {"x": 36, "y": 24}, {"x": 44, "y": 24}, {"x": 52, "y": 24}]
+# Mảng này được dùng để theo dõi con tuần lộc nào đã được chỉ định vào chuồng nào.
+assignments = [None, None, None, None, None, ]
+# Và đây là mảng chứa các con tuần lộc của chúng ta.
+friends = hero.findFriends()
+
+# Xác định con tuần lộc nào đã ở trong chuồng của chúng.
+for deerIndex in range(len(friends)):
+    reindeer = friends[deerIndex]
+
+    # Duyệt qua từng vị trí và xem nếu vị trí đó trùng với vị trí của con tuần lộc.
+    for posIndex in range(len(penPositions)):
+        penPos = penPositions[posIndex]
+
+        if penPos.x == reindeer.pos.x and penPos.y == reindeer.pos.y:
+            # Đặt con tuần lộc vào mảng assignments ở vị trí posIndex.
+            assignments[posIndex] = penPositions[posIndex]
+            # Xóa con tuần lộc khỏi mảng friends.
+            friends[deerIndex] = None
+            # Thoát khỏi vòng lặp bên trong để tránh nhầm lẫn.
+            break
+
+# Chỉ định các con tuần lộc còn lại vào các vị trí mới.
+for deerIndex in range(len(friends)):
+    # Nếu con tuần lộc ở vị trí này trong mảng là null, bỏ qua và tiếp tục sang con tiếp theo.
+    if not friends[deerIndex]:
+        continue
+    reindeer = friends[deerIndex]
+    # Tìm chuồng đầu tiên chưa có con tuần lộc nào được chỉ định vào.
+    for posIndex in range(len(penPositions)):
+        # Nếu không có gì trong vị trí này của mảng assignments, thì chuồng đó còn trống.
+        if not assignments[posIndex]:
+            # Đặt con tuần lộc vào mảng assignments.
+            assignments[posIndex] = friends[deerIndex]
+            # Ra lệnh cho con tuần lộc di chuyển đến vị trí chuồng.
+            hero.command(assignments[posIndex], 'move', penPositions[posIndex])
+            # Thoát khỏi vòng lặp for bên trong để không gán lại con tuần lộc này.
+            break
