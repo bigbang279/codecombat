@@ -1,0 +1,19 @@
+# Đánh bại Yetis.
+
+# Nhân vật được chọn có thể làm choáng Yetis bằng kỹ năng Shout.
+chosen = hero.findFriends()[0]
+
+# Sức mạnh của Shout bằng với diện tích của một hình tròn.
+radius = chosen.distanceTo(chosen.findNearestEnemy())
+
+# Diện tích của hình tròn được tính bằng công thức:
+area = radius * radius * Math.PI
+
+# Nói diện tích (area) cho nhân vật được chọn.
+hero.say(area)
+
+# Đừng bỏ cuộc! Chiến đấu!
+while True:
+    enemyattack = hero.findNearestEnemy()
+    if enemyattack:
+        hero.attack(enemyattack)
