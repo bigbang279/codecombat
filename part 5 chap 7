@@ -1,0 +1,27 @@
+# Cấp độ này giới thiệu toán tử %, còn được gọi là toán tử modulo.
+# a % b trả về phần còn lại của a chia cho b
+# Điều này có thể được sử dụng để bao quanh phần đầu của một mảng khi một chỉ mục có thể lớn hơn độ dài
+
+defendPoints = [{"x": 35, "y": 63},{"x": 61, "y": 63},{"x": 32, "y": 26},{"x": 64, "y": 26}]
+
+summonTypes = ["soldier","soldier","soldier","soldier","archer","archer","archer","archer"]
+
+# Em bắt đầu với 360 vàng để xây dựng tập hợp chiến binh và cung thủ.
+# self.built là một mảng quân đội em đã từng xây dựng.
+# Ở đây chúng tôi sử dụng "len (self.built) % len (summonTypes)" để bao quanh mảng summonTypes
+def summonTroops():
+    type = summonTypes[len(hero.built) % len(summonTypes)]
+    if hero.gold >= hero.costOf(type):
+        hero.summon(type)
+
+def commandTroops():
+    friends = hero.findFriends()
+    for friendIndex, friend in enumerate(friends):
+        hero.command(friend, 'defend', defendPoints[friendIndex % len(defendPoints)])
+        pass
+      
+
+
+while True:
+    summonTroops()
+    commandTroops()
