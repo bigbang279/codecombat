@@ -1,0 +1,51 @@
+# Incoming Ogre Brawlers!
+# Sử dụng Robot Walker để tiêu diệt các kẻ thù này.
+# Robot Walker yêu cầu các lệnh dưới dạng chuỗi.
+# Phần đầu tiên là lượng máu của kẻ thù ở dạng cơ số ba.
+# Phần thứ hai là loại kẻ thù ở dạng nhị phân.
+
+def toTernary(number):
+    # Bắt đầu với một chuỗi rỗng.
+    string = ""
+    # Trong khi số vẫn chưa bằng không:
+    while number != 0:
+        # Lấy phần dư của số.
+        remainder = number % 3
+        # Giảm số đi để lặp lại.
+        number = (number - remainder) // 3
+        # Nối phần dư vào chuỗi.
+        string = str(remainder) + string
+    # Nếu string rỗng, trả về "0" vì số ban đầu có thể là 0
+    return string if string else "0"
+
+def toBinary(number):
+    string = ""
+    # Trong khi số vẫn chưa bằng không:
+    while number != 0:
+        # Lấy phần dư của số.
+        remainder = number % 2
+        # Giảm số đi để lặp lại.
+        number = (number - remainder) // 2
+        # Nối phần dư vào chuỗi.
+        string = str(remainder) + string
+    # Nếu string rỗng, trả về "0" vì số ban đầu có thể là 0
+    return string if string else "0"
+
+# Hàm tìm kẻ thù nguy hiểm nhất dựa trên lượng máu.
+def findMostDangerous(enemies):
+    mostDangerous = None
+    mostHealth = 0
+    for i in range(len(enemies)):
+        enemy = enemies[i]
+        if enemy.health > mostHealth:
+            mostDangerous = enemy
+            mostHealth = enemy.health
+    return mostDangerous
+
+while True:
+    enemies = hero.findEnemies()
+    dangerous = findMostDangerous(enemies)
+    if dangerous:
+        # Robot nhận lệnh dưới dạng:
+        # ternary(enemyHealth) + " " + binary(enemyType)
+        hero.say(toTernary(dangerous.health) + " " + toBinary(dangerous.type))
