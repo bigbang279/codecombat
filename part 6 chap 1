@@ -1,0 +1,34 @@
+def findBestItem(friend, excludedItems):
+    items = friend.findItems()
+    bestItem = None
+    bestItemValue = 0
+    for item in items:
+        # Sử dụng `in` để kiểm tra nếu `item` nằm trong danh sách `excludedItems`.
+        # Trong trường hợp này, bỏ qua món đồ mà đã có nông dân khác nhắm đến.
+        if item not in excludedItems:
+            # Tính toán giá trị của món đồ dựa trên công thức `item.value / distanceTo`.
+            if bestItemValue < item.value / friend.distanceTo(item):
+                bestItemValue = item.value / friend.distanceTo(item)
+                bestItem = item
+    return bestItem
+
+while True:
+    peasants = hero.findByType("peasant")
+    # Tạo một mảng mới trong mỗi vòng lặp để theo dõi các món đồ đã được nhắm đến.
+    claimedItems = []
+    for peasant in peasants:
+        enemy = peasant.findNearestEnemy()
+        if enemy:
+            # Nếu nông dân là mục tiêu của kẻ thù và
+            # hero có đủ vàng để mua mồi nhử
+            if hero.gold > peasant.costOf('decoy'):
+                # Ra lệnh cho nông dân xây mồi nhử:
+                hero.command(peasant, 'buildXY', 'decoy', peasant.pos.x, peasant.pos.y)
+                # Thêm `continue` để nông dân không thu thập tiền xu trong khi xây dựng.
+                continue
+        item = findBestItem(peasant, claimedItems)
+        if item:
+            # Sau khi nông dân đã nhắm đến món đồ, đặt nó vào mảng `claimedItems`.
+            claimedItems.append(item)
+            # Ra lệnh cho nông dân di chuyển đến vị trí của món đồ để thu thập nó.
+            hero.command(peasant, 'move', item.pos)
