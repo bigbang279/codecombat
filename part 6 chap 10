@@ -1,0 +1,32 @@
+# (Biên dịch bởi Galaxy Education) Đẩy quả bóng để hạ gục tất cả các bộ xương màu xanh mà không đánh trúng bất kỳ bộ xương màu đỏ nào.
+# Những bộ xương xanh có thể được tìm thấy như kẻ địch.
+# (Biên dịch bởi Galaxy Education) Đẩy quả bóng để hạ gục tất cả các bộ xương màu xanh mà không đánh trúng bất kỳ bộ xương màu đỏ nào.
+# Những bộ xương xanh có thể được tìm thấy như kẻ địch.
+center = Vector(40,35)
+punch_array = []
+enemies = hero.findEnemies()
+friend = hero.findFriends()[0]
+bong = self.findNearest(self.findByType('ball'))
+bongPos = Vector(bong.pos.x,bong.pos.y)
+for enemy in enemies:
+    huongbong = Vector.subtract(bongPos,enemy.pos)
+    chuanhoa = Vector.normalize(huongbong)
+    ngang = Vector.multiply(chuanhoa,10)
+    doc = bong.pos.add(ngang)
+    punch_array.append(doc)
+    
+distance = 100
+
+while len(punch_array) > 0:
+    min_dist, min_index = 999,-1
+    for index , punch in enumerate(punch_array):
+        if min_dist > Vector.subtract(punch,friend.pos).magnitude():
+            min_dist = Vector.subtract(punch,friend.pos).magnitude()
+            min_index = index
+    vector = punch_array.pop(min_index)
+    if min_index != -1:
+        hero.command(friend, 'move', vector)
+        hero.wait(1)
+        hero.command(friend, 'move',center)
+        hero.wait(1)
+        hero.command(friend, 'move',vector)
