@@ -1,0 +1,43 @@
+# (Biên dịch bởi Galaxy Education) Bây giờ em có Ring of Flowers! Emcó thể làm:
+# toggleFlowers (True/False) - bật hoặc tắt những bông hoa.
+# setFlowerColor("random") - cũng có thể là  "pink", "red", "blue", "purple", "yellow", hoặc "white".
+flowerColor = ["pink", "red", "blue", "purple", "yellow","white"]
+index = len(flowerColor)
+# Dưới đây là một số hàm để vẽ hình:
+# x, y - tâm của hình
+# kích thước - kích thước của hình dạng (bán kính, chiều dài cạnh)
+def drawCircle(x, y, size):
+    angle = 0
+    hero.toggleFlowers(False)
+    while angle <= Math.PI * 2:
+        newX = x + (size * Math.cos(angle))
+        newY = y + (size * Math.sin(angle))
+        hero.moveXY(newX, newY)
+        hero.toggleFlowers(True)
+        angle += 0.2
+
+def drawSquare(x, y, size):
+    hero.toggleFlowers(False)
+    cornerOffset = size / 2
+    hero.moveXY(x - cornerOffset, y - cornerOffset)
+    hero.toggleFlowers(True)
+    hero.moveXY(x + cornerOffset, y - cornerOffset)
+    hero.moveXY(x + cornerOffset, y + cornerOffset)
+    hero.moveXY(x - cornerOffset, y + cornerOffset)
+    hero.moveXY(x - cornerOffset, y - cornerOffset)
+
+
+redX = {"x": 28, "y": 36}
+whiteX = {"x": 44, "y": 36}
+
+# Chọn một màu.
+hero.setFlowerColor("red")
+# Vẽ một hình tròn kích thước 10 tại redX.
+drawCircle(redX["x"],redX["y"],10)
+# Thay đổi màu sắc!
+hero.setFlowerColor("white")
+# Vẽ một hình vuông kích thước 10 tại whiteX.
+drawSquare(whiteX["x"], whiteX["y"], 10)
+# Bây giờ hãy thử nghiệm với việc vẽ bất cứ thứ gì em muốn!
+hero.setFlowerColor("blue")
+drawCircle(60, 35, 5)
