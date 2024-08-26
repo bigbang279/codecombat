@@ -1,0 +1,31 @@
+# Tên phù thủy sẽ sử dụng câu thần chú "clone" để tạo ra các đối thủ của quân ta.
+# Nhưng ngay cả câu thần chú xấu xa đó cũng có điểm yếu.
+# Nếu cung thủ chạm vào đúng đối thủ của mình thì hắn sẽ biến mất.
+# Nếu một cung thủ đụng độ với nhầm đối thủ và tấn công nhầm chúng, chúng sẽ bắt đầu chiến đấu.
+# Chúng ta có thể tìm được đối thủ bằng tên - họ có tên đảo ngược với nhau.
+
+# Hàm này sẽ kiểm tra hai người xem có phải đối thủ của nhau không.
+def areAntipodes(unit1, unit2):
+    reversed1 = ""
+    for i in range(len(unit1.id) - 1, -1, -1):
+        reversed1 += unit1.id[i]
+    return reversed1 == unit2.id
+
+friends = hero.findFriends()
+enemies = hero.findEnemies()
+
+# Tìm đối thủ cho mỗi cung thủ.
+# Lặp lại tất cả những người bạn.
+for friend in friends:
+    # Đối với mỗi người bạn, lặp lại tất cả các kẻ địch.
+    for enemy in enemies:
+        # Kiểm tra xem người bạn và kẻ địch hiện tại có đúng là đối thủ của nhau không.
+        if areAntipodes(friend,enemy):
+            # Nếu đó là đối thủ, hãy lệnh cho người bạn di chuyển đến chỗ kẻ địch.
+            hero.command(friend, 'move', enemy.pos)
+
+# (Biên dịch bởi Galaxy Education) Khi tất cả các đối thủ biến mất, hãy tấn công tên phù thủy.
+while True:
+    enemies = hero.findEnemies()
+    while len(enemies) == 1:
+        hero.attack(enemies[0])
