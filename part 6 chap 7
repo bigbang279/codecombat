@@ -1,0 +1,15 @@
+#  (Biên dịch bởi Galaxy Education) Một điểm dừng cuối cùng trước khi kế hoạch có thể được thực hiện!
+# Việc giúp Senick có được kích thước trung bình của những người tuyết này là tùy thuộc cả vào em. 
+
+# Tìm kiếm tất cả những Người tuyết bằng cách sử dụng 'findByType':
+def average(array):
+    tbc = 0
+    for nguoituyet in array:
+        tbc += nguoituyet.size
+    return tbc / len(array)
+
+yetis = hero.findByType("yeti")
+# Thực hiện hàm averageSize từ đầu: 
+tbc = average(yetis)
+# Hãy nói kích thước trung bình của người tuyết: 
+hero.say(tbc)
