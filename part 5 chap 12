@@ -1,0 +1,23 @@
+# Em phải tìm thấy kho báu.
+
+# Hàm này sẽ trả về chỉ mục của một ký tự:
+def letterIndex(word, letter):
+    # Bước qua mỗi ký tự như một chỉ mục của từ.
+    for i in range(len(word)):
+        # Lưu trữ một ký tự từ từ với chỉ mục hiện tại.
+        currentLetter = word[i]
+        
+        # Nếu đó là ký tự bắt buộc:
+        if currentLetter == letter:
+            # Sau đó trả về chỉ mục (số) hiện tại.
+            return i
+            
+    # Nếu không có gì, hãy trả về một giá trị mặc định
+    return -1
+
+ogreLetter = "z"
+shaman = hero.findByType("thoktar")[0]
+
+# Tìm chỉ mục và sử dụng nó để tìm kho báu.
+chestIndex = letterIndex(shaman.id, ogreLetter)
+hero.moveXY(16 + chestIndex * 8, 36)
