@@ -1,0 +1,23 @@
+# Phản chiếu hành động của đồng đội em xung quanh trung tâm điểm X. (Biên dịch bởi Galaxy Education)
+# Vector có thể coi như một vị trí x, y
+# Vector cũng có thể biểu diễn khoảng cách và hướng giữa hai vị trí.
+
+# sử dụng Vector.subtract(vector1, vector2) để tìm hướng và khoảng cách từ vector2 đến vector1
+# sử dụng Vector.add(vector1, vector2) để tìm vị trí mà em nhận được khi em bắt đầu từ vector1 và theo dõi vector2
+
+# Tạo một Vector mới ở trung tâm điểm X
+center = Vector(40, 34)
+
+# Vị trí của một đơn vị là một Vector!
+partner = hero.findByType("peasant")[0]
+
+while True:
+    # Đầu tiên, em muốn tìm Vector (khoảng cách và hướng) của vị trí đồng đội của em đến trung tâm điểm X.
+    #vector = 
+    vector = Vector.subtract(center,partner.pos)
+    # Thứ hai, tìm vị trí hero moveTo  bắt đầu từ trung tâm, và sau vector.
+    #moveToPos = 
+    moveToPos = vector.add(center,vector)
+    # Thứ ba, di chuyển đến vị trí moveToPos.
+    hero.move(moveToPos)
+    pass
