@@ -1,0 +1,24 @@
+# Lũ yêu tinh sẽ tấn công sớm thôi. 
+# Di chuyển đến gần các lều (tới dấu X)
+# say() điều gì đó ở mỗi X để đánh thức các chiến binh. 
+# Cẩn thận: rời trại khi trận chiến bắt đầu!
+# Lũ yêu tinh sẽ gửi tiếp viện nếu chúng thấy em. 
+
+# Viên trung sĩ biết khoảng cách giữa các lều. 
+sergeant =  hero.findNearest(hero.findFriends())
+stepX = sergeant.tentDistanceX
+stepY = sergeant.tentDistanceY
+
+tentsInRow = 5
+tentsInColumn = 4
+
+firstX = 10
+firstY = 14
+
+for y in range(firstY,stepY * tentsInColumn + stepY
+    ,stepY):
+        # Move at the marks near tents and say anything.
+    for x in range(firstX,stepX * tentsInRow + stepX
+    ,stepX):
+        hero.moveXY(x, y)
+        hero.say("alarm")
