@@ -1,0 +1,32 @@
+# Di chuyển tới dấu X màu đỏ trong khi vẫn né những chú bò tây tạng. 
+# sử dụng Vector.normalize(vector1) để tạo một vectơ cùng hướng với vector1, nhưng với khoảng cách là 1
+# sử dụng Vector.multiply(vector1, X) để tạo một vectơ trong cùng hướng với vector1, nhưng với khoảng cách được nhân với X
+
+# Điểm mà em muốn đạt được. 
+goalPoint = Vector(78, 34)
+
+while True:
+    # Điều này tạo ra một vectơ sẽ di chuyển em 10 mét về phía goalPoint 
+    # Đầu tiên, tạo một vectơ từ em tới điểm mục tiêu. 
+    goal = Vector.subtract(goalPoint, hero.pos)
+    # Sau đó, chuẩn hóa nó thành một vectơ khoảng cách 1m
+    goal = Vector.normalize(goal)
+    # Cuối cùng, nhân vectơ 1m với 10 để nhận được một vectơ dài 10m.
+    goal = Vector.multiply(goal, 10)
+    
+    # Để né những chú bò tây tạng, nếu em cách chúng trong vòng 10m thì nên tránh xa nó. 
+    yak = hero.findNearest(hero.findEnemies())
+    distance = hero.distanceTo(yak)
+    if distance < 10:
+        # Đầu tiên, tạo một Vectơ từ chú bò tây tạng đến chỗ em
+        yak_vector = Vector.subtract(hero.pos,yak.pos)
+        # Bây giờ, hãy sử dụng Vector.normalize và Vector.multiply để làm cho nó dài ra 10m. 
+        yak_vector = Vector.normalize(yak_vector)
+        yak_vector = Vector.multiply(yak_vector,10)
+        # Khi em có vectơ cách chú bò tây tạng 10m, hãy sử dụng Vector.add để thêm nó vào vectơ mục tiêu của em nhé!
+        goal = Vector.add(yak_vector,goal)
+        pass
+
+    # (Biên dịch bởi Galaxy Education) Cuối cùng, xác định vị trí em cần di chuyển bằng cách thêm vectơ mục tiêu vào vị trí hiện tại của mình. 
+    moveToPos = Vector.add(hero.pos, goal)
+    hero.move(moveToPos)
