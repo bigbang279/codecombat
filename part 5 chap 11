@@ -1,0 +1,26 @@
+# (Biên dịch bởi Galaxy Education) Cổng bên trong có thể giữ trong thời gian dài.
+# Tuy nhiên, một trong số những người nông dân này là một GIÁN ĐIỆP YÊU TINH!
+# Đây là gợi ý! Tên gián điệp có chữ "z"
+
+# Hàm này kiểm tra chữ cái đặc biệt trong một từ.
+# Một chuỗi chỉ là một mảng! Lặp lại nó như một mảng
+def letterInWord(word, letter):
+    for i in range(len(word)):
+        character = word[i]
+        # Nếu ký tự bằng chữ cái, trả về True
+        if character == "z":
+            return True
+    # Chữ cái không có trong từ, nên trả về False
+    return False
+
+
+spyLetter = "z"
+friends = hero.findFriends()
+
+for friend in friends:
+    friendName = friend.id
+    if letterInWord(friendName, spyLetter):
+        # Tiết lộ gián điệp!
+        hero.say(friendName + " is a spy!")
+    else:
+        hero.say(friendName + " is a friend.")
