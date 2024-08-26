@@ -1,0 +1,69 @@
+summonTypes = ['griffin-rider']
+
+# Hàm này dùng để triệu hồi lính dựa trên số vàng hiện có.
+def summonTroops():
+    # Xác định loại quân đội cần triệu hồi dựa trên số lượng quân đã triệu hồi trước đó.
+    type = summonTypes[len(hero.built) % len(summonTypes)]
+    # Nếu hero có đủ vàng để triệu hồi loại quân đó, thì triệu hồi nó.
+    if hero.gold > hero.costOf(type):
+        hero.summon(type)
+
+# Tìm paladin có lượng máu thấp nhất.
+def lowestHealthPaladin():
+    lowestHealth = 99999  # Giá trị ban đầu cao để có thể tìm paladin yếu hơn.
+    lowestFriend = None
+    friends = hero.findFriends()
+    for friend in friends:
+        if friend.type != "paladin":
+            continue
+        # Tìm paladin có máu thấp nhất nhưng vẫn dưới mức tối đa.
+        if friend.health < lowestHealth and friend.health < friend.maxHealth:
+            lowestHealth = friend.health
+            lowestFriend = friend
+    return lowestFriend
+
+# Chỉ huy các paladin.
+def commandPaladin(paladin):
+    # Nếu paladin có thể sử dụng phép "heal".
+    if paladin.canCast("heal"):
+        target = lowestHealthPaladin()
+        if target:
+            hero.command(paladin, "cast", "heal", target)
+    # Nếu máu của paladin dưới 200, ra lệnh cho họ dùng "shield".
+    elif paladin.health < 200:
+        hero.command(paladin, "shield")
+    # Nếu không, ra lệnh cho họ tấn công kẻ thù gần nhất.
+    else:
+        target = paladin.findNearestEnemy()
+        if target:
+            hero.command(paladin, "attack", target)
+
+# Chỉ huy các nông dân.
+def commandPeasant(peasant):
+    item = peasant.findNearestItem()
+    if item:
+        hero.command(peasant, 'move', item.pos)
+
+# Chỉ huy các Griffin Riders.
+def commandGriffin(griffin):
+    target = hero.findNearest(hero.findByType('warlock'))
+    if not target:
+        target = griffin.findNearestEnemy()
+    if target:
+        hero.command(griffin, "attack", target)
+
+# Chỉ huy tất cả các đồng minh.
+def commandFriends():
+    friends = hero.findFriends()
+    for friend in friends:
+        if friend.type == "peasant":
+            commandPeasant(friend)
+        elif friend.type == "griffin-rider":
+            commandGriffin(friend)
+        elif friend.type == "paladin":
+            commandPaladin(friend)
+
+# Vòng lặp chính của trò chơi.
+while True:
+    commandFriends()
+    summonTroops()
