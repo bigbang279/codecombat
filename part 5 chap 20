@@ -1,0 +1,16 @@
+# (Biên dịch bởi Galaxy Education)  Kho báu ở đâu đó giữa lùm cây.
+# Tọa độ là 'x: ?0, y: ?0'.
+# Di chuyển ở tất cả các điểm có khả năng và chỉ cho nông dân tại đó đào.
+
+
+leftBorder = 20
+rightBorder = 61
+bottomBorder = 20
+topBorder = 51
+step = 10
+for x in range(leftBorder, rightBorder, step):
+    for y in range(leftBorder, rightBorder, step):
+        hero.moveXY(x, y)
+        hero.say('Djigurda')
+
+hero.moveXY(20, 10)
