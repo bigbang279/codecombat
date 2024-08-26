@@ -1,0 +1,27 @@
+# (Biên dịch bởi Galaxy Education)  Chúng ta cần xây dựng những toà tháp canh giữ xung quanh ngôi làng.
+# Mỗi nông dân có thể xây dựng một toà tháp.
+# Chỉ cho họ nơi để xây dựng.
+# Các toà tháp này là tự động và sẽ tấn công TẤT CẢ các đơn vị bên ngoài thị trấn.
+
+# Đầu tiên di chuyển dọc theo biên giới phía bắc (y = 60) từ x = 40 đến x = 80 với bước 20.
+# `range` không bao gồm cạnh thứ hai.
+for x in range(40, 81, 20):
+    # Di chuyển tại mỗi điểm và nói bất cứ điều gì.
+    hero.moveXY(x, 60)
+    hero.say("Here")
+# Tiếp theo di chuyển dọc theo biên giới phía đông (x = 80) từ y = 40 đến y = 20 với bước âm -20.
+for y in range(40, 19, -20):
+    hero.moveXY(80, y)
+    hero.say("Here")
+# Tiếp tục cho hai đường biên giới còn lại.
+# Tiếp theo đường biên giới phía nam (y = 20) từ x = 60 đến x = 20 với bước âm -20.
+for x in range(60,19,-20):
+    hero.moveXY(x, 20)
+    hero.say("here")
+# Tiếp theo đường biên giới phía tây (x = 20) từ y = 40 đến y = 60 với bước 20.
+for y in range(40,61,20):
+    hero.moveXY(20, y)
+    hero.say("here")
+# Đừng quên trốn bên trong làng.
+
+hero.moveXY(50, 40)
