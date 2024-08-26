@@ -1,0 +1,55 @@
+def summonSoldier():
+    if hero.gold > hero.costOf("soldier"):
+        hero.summon("soldier")
+
+
+
+def commandSoldier(soldier, soldierIndex, numSoldiers):
+    angle = Math.PI * 2 * soldierIndex / numSoldiers
+    defendPos = {"x": 41, "y": 40}
+    defendPos.x += 10 * Math.cos(angle)
+    defendPos.y += 10 * Math.sin(angle)
+    if (soldier.health > 60):
+        hero.command(soldier, "defend", defendPos)
+    else:
+        hero.command(soldier, "defend", {'x': 42, 'y': 40})
+
+
+def findStrongestTarget():
+    mostHealth = 0
+    bestTarget = None
+    enemies = hero.findEnemies()
+
+    if bestTarget and bestTarget.health > 15:
+        return bestTarget
+    else:
+        return None
+
+
+
+def commandArcher(archer):
+    nearest = archer.findNearestEnemy()
+    if archerTarget:
+        hero.command(archer, "attack", archerTarget)
+    elif nearest:
+        hero.command(archer, "attack", nearest)
+
+
+archerTarget = None
+
+while True:  
+    if not archerTarget or archerTarget.health <= 0:
+        
+        archerTarget = findStrongestTarget()
+
+    friends = hero.findFriends()
+    soldiers = hero.findByType("soldier")
+    archers = hero.findByType("archer")
+    for i, soldier in enumerate(soldiers):
+        commandSoldier(soldier, i, len(soldiers));
+    summonSoldier()
+   
+    for i, archer in enumerate(archers):
+        commandArcher(archer);
+
+
