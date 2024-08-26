@@ -1,0 +1,33 @@
+# (Biên dịch bởi Galaxy Education) Em phải đánh bại lũ yêu tinh
+# Nhưng chúng đang sử dụng ma thuật đen!
+# Chỉ những chiến binh cao nguyên mới được miễn nhiễm.
+# Tìm người cao nguyên, tên họ luôn có "mac"
+
+highlanderName = "mac"
+
+# Hàm này sẽ tìm kiếm một chuỗi bên trong một từ:
+def wordInString(string, word):
+    lenString = len(string)
+    lenWord = len(word)
+    # Bước qua các chỉ mục (i) từ 0 đến (lenString - lenWord)
+    for i in range(lenString - lenWord):
+        # Đối với mỗi người trong số họ, bước qua các chỉ mục (j) của độ dài từ
+        for j in range(lenWord):
+            # Nếu ký tự thứ [i + j] của chuỗi không bằng ký tự thứ [j] của từ, thì vòng lặp ngắt
+            if string[i + j] != word[j]:
+                break
+            # nếu đây là ký tự cuối cùng của từ (j == lenWord - 1), thì trả về True.
+            if j == lenWord - 1:
+                return True
+                    
+    # Nếu các vòng lặp được kết thúc thì từ đó không nằm trong chuỗi. Trả lại False.
+    return False # ∆ Xoá bỏ cái này khi hàm được viết.
+
+# Nhìn vào những chiến của em và chỉ chọn những người cao nguyên
+soldiers = hero.findFriends()
+for soldier in soldiers:
+    if wordInString(soldier.id, highlanderName):
+        hero.say(soldier.id + " be ready.")
+        
+# Đã đến lúc tấn công!
+hero.say("ATTACK!!!")
