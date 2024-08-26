@@ -1,0 +1,22 @@
+#  (Biên dịch bởi Galaxy Education) Những người nông dân mộng du đang quay trở lại. 
+# Những những người tuyết mộng du cũng đang đến. 
+# KHÔNG ĐÁNH THỨC CHÚNG DẬY!
+# Xây dựng hàng rào để cho những người nông dân đi qua và chặn người tuyết lại. 
+
+
+# Senick đã chuẩn bị bản đồ lưới về cách xây hàng rào như thế nào. 
+
+hunter = hero.findNearest(hero.findFriends())
+fenceMap = hunter.getMap()
+
+
+def convertCoor(row, col):
+    return {'x': 34 + col * 4, 'y': 26 + row * 4}
+
+
+for ri, row in enumerate(fenceMap):
+    for rx, col in enumerate(row):
+        if (col == 1):
+            coor = convertCoor(ri, rx)
+            hero.buildXY('fence', coor.x, coor.y)
+hero.moveXY(22, 15)
