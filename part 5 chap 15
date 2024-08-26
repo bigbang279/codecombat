@@ -1,0 +1,35 @@
+# Bảo vệ ngôi làng bằng bẫy lửa.
+# Khai thác tất cả các đoạn đường theo bốn hướng.
+# Em có 80 giây trước khi lũ yêu tinh tấn công.
+
+# Xây dựng bẫy trên đường thẳng y = 114 từ x = 40 đến x = 112 với bước = 24.
+def buildNorthLine():
+    for x in range(40, 113, 24):
+        hero.buildXY("fire-trap", x, 114)
+
+# Xây dựng bẫy trên đường thẳng x = 140 từ y = 110 đến y = 38 với bước = 18.
+def buildEastLine():
+    # (Biên dịch bởi Galaxy Education) Hoàn thành hàm này:
+    for y in range(110,37,-18):
+        hero.buildXY("fire-trap", 140, y)
+    pass
+
+# Xây dựng bẫy trên đường thẳng y = 22 từ x = 132 đến x = 32 với bước = 20.
+def buildSouthLine():
+    # (Biên dịch bởi Galaxy Education) Hoàn thành hàm này:
+    for x in range(132,31,-20):
+        hero.buildXY("fire-trap", x, 22)
+    pass
+
+# Xây dựng bẫy trên đường thẳng x = 20 từ y = 28 đến y = 108 với bước = 16.
+def buildWestLine():
+    # (Biên dịch bởi Galaxy Education) Hoàn thành hàm này:
+    for y in range(28,109,16):
+        hero.buildXY("fire-trap", 20, y)
+    pass
+
+buildNorthLine()
+buildEastLine()
+buildSouthLine()
+buildWestLine()
+hero.moveXY(40, 94)
