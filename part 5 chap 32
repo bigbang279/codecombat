@@ -1,0 +1,24 @@
+# Hàm tìm kiếm một đối tượng (thang) dựa trên tên của nó
+def findByName(name, thangs):
+    for i in range(len(thangs)):
+        thang = thangs[i]
+        if thang.id == name:
+            return thang
+    return None
+
+# Tìm bạn bè của hero
+friends = hero.findFriends()
+celadia = findByName("Celadia", friends)
+dedalia = findByName("Dedalia", friends)
+
+# Tính độ dài cạnh của hình vuông dựa trên khoảng cách giữa Celadia và Dedalia
+sideLength = celadia.distanceTo(dedalia)
+
+# Tìm các paladin còn lại và gán chúng vào các biến:
+illumina = findByName("Illumina", friends)
+vaelia = findByName("Vaelia", friends)
+
+# Ra lệnh cho Illumina và Vaelia di chuyển đến các góc của hình vuông
+# Nhớ rằng các cạnh của hình vuông có độ dài bằng nhau!
+hero.command(illumina, 'move', {'x': celadia.pos.x, 'y': celadia.pos.y - sideLength})
+hero.command(vaelia, 'move', {'x': dedalia.pos.x, 'y': dedalia.pos.y - sideLength})
