@@ -1,0 +1,34 @@
+# Chúng ta phải triệu hồi Chiến Binh Cổ Đại cho tên yêu tinh này!
+# Bốn paladin phải tạo thành một hình chữ nhật.
+# Nhưng hình chữ nhật cần có diện tích và chu vi cụ thể
+# Paladin sẽ tiếp tục di chuyển, niệm chú khi sẵn sàng.
+# Rất khó để chính xác, nhưng gần như bằng nhau là được.
+
+# Hàm này sẽ so sánh giá trị A và B trong khoảng 3%.
+def almostEqual(valueA, valueB):
+    return valueA < valueB * 1.03 and valueA > valueB * 0.97
+
+# Hàm tính chu vi của hình chữ nhật
+def perimeter(side1, side2):
+    return (side1 + side2) * 2
+
+# Hàm tính diện tích của hình chữ nhật
+def area(side1, side2):
+    return side1 * side2
+
+# Các giá trị chuẩn cần thiết
+requiredPerimeter = 104
+requiredArea = 660
+
+# Paladin gốc để tính khoảng cách
+base = hero.findNearest(hero.findFriends())
+
+while True:
+    sideSN = base.distanceTo("Femae")
+    sideWE = base.distanceTo("Illumina")
+    currentPerimeter = perimeter(sideSN, sideWE)
+    currentArea = area(sideSN, sideWE)
+    if almostEqual(currentArea, requiredArea) and almostEqual(currentPerimeter, requiredPerimeter):
+        hero.say("VENITE!")
+        break
+
