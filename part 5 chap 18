@@ -1,0 +1,24 @@
+# Có bốn cặp song sinh, họ nên cầu nguyện theo cặp. 
+# Em cần tìm các cặp song sinh và gọi cho họ. 
+
+# Cặp song sinh có chung tên, chỉ khác nhau chữ cái cuối cùng. 
+# Hàm này kiểm tra xem cặp đơn vị có phải là cặp song sinh hay không. 
+
+def areTwins(unit1, unit2):
+    name1 = unit1.id
+    name2 = unit2.id
+    if name1.length != name2.length:
+        return False
+    for i in range(name1.length - 1):
+        if name1[i] != name2[i]:
+            return False
+    return True
+
+for paladin1 in hero.findFriends():
+    for paladin2 in hero.findFriends():
+        if (paladin1.id != paladin2.id and areTwins(paladin1, paladin2)):
+            hero.say(paladin1.id + " " + paladin2.id)
+
+
+hero.moveXY(63, 38)
+hero.moveXY(16, 38)
