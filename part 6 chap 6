@@ -1,0 +1,32 @@
+# Senick cần mồi lớn để có một con mồi lớn!
+# Giúp Senick tìm một con yak trên mức trung bình!
+# Đừng chọn một con nằm quá sâu trong đàn, hoặc có nguy cơ chọc giận cả nhóm.
+
+# Hàm này sẽ trả về kích thước trung bình của tất cả các bò Tây Tạng:
+def averageSize(yaks):
+    sum = 0
+    # Đi qua từng yak và thêm kích thước của nó vào tổng.
+    for yak in yaks:
+        sum += yak.size
+    return sum / yaks.length
+
+yaks = hero.findEnemies()
+avgSize = averageSize(yaks)
+
+bestYak = None
+closestDist = 9999
+for i in range(len(yaks)):
+    yak = yaks[i]
+    yakDistance = hero.distanceTo(yak)
+    yakSize = yak.size
+    # Kiểm tra xem yak là:
+    # Khoảng cách gần hơn 'closestDist' hiện tại AND 
+    # Kích thước lớn hơn 'avgSize'.
+    if yakDistance < closestDist and yakSize > avgSize:
+        # Cập nhật 'bestYak' và 'closestDist'
+        bestYak = yak
+        closestDist = yakDistance
+
+# (Biên dịch bởi Galaxy Education) Nói 'bestYak':
+if bestYak:
+    hero.say(bestYak)
