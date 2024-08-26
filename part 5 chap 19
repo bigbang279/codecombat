@@ -1,0 +1,25 @@
+# Em cần đánh lạc hướng "Big Bertha" cho đến khi đội đặc biệt đến. 
+# Khẩu đại bác bắn vào cặp lính gần nhau nhất. 
+
+# Hàm này tìm kiếm các cặp đơn vị.
+# với khoảng cách tối thiểu giữa chúng.
+def findNearestPair(units):
+    minDistance = 9001
+    nearestPair = ["Nobody", "Nobody"]
+    for i in range(0, len(units)):
+        for j in range(i + 1, len(units)):
+            
+            distance = units[i].distanceTo(units[j])
+            
+            if distance < minDistance:
+                minDistance = distance
+                nearestPair = [units[i].id, units[j].id]
+    return nearestPair
+
+while True:
+    soldiers = hero.findByType("soldier")
+    if hero.time % 8 == 5:
+  
+        pairOfNames = findNearestPair(soldiers)
+    
+        hero.say(pairOfNames[0] + " " + pairOfNames[1])
