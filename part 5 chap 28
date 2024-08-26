@@ -1,0 +1,22 @@
+# Mảng này chứa trạng thái của mỗi con tuần lộc.
+deerStatus = [ 'asleep', 'asleep', 'asleep', 'asleep', 'asleep' ]
+
+# (Biên dịch bởi Galaxy Education)  Và mảng này chứa tuần lộc của chúng ta.
+friends = hero.findFriends()
+
+# Lặp qua những con tuần lộc và tìm những con còn thức:
+for deerIndex in range(len(friends)):
+    reindeer = friends[deerIndex]
+
+    # Tuần lộc có vị trí y > 30 không ở trong bút.
+    # Nếu vậy, hãy đặt mục nhập của tuần lộc thành "awake".
+    if reindeer.pos.y > 30:
+        deerStatus[deerIndex] = 'awake'
+    pass
+
+# Lặp lại các trạng thái và báo cáo cho Merek.
+for statusIndex in range(len(deerStatus)):
+    # Cho Merek biết chỉ số tuần lộc và trạng thái của nó.
+    # Nói điều gì đó như "Reindeer 2 is asleep".
+    hero.say('Reindeer ' + statusIndex + ' is ' + deerStatus[statusIndex])
+    pass
