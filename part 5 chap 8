@@ -1,0 +1,26 @@
+def findSoldierOffset(soldiers, i):
+    soldier = soldiers[i]
+    angle = i * 360 / len(soldiers)
+    return radialToCartesian(5, angle)
+
+# Hàm này thực hiện phép toán để xác định độ lệch mà một chiến binh phải đứng ở đó.
+def radialToCartesian(radius, degrees):
+    radians = Math.PI / 180 * degrees
+    xOffset = radius * Math.cos(radians)
+    yOffset = radius * Math.sin(radians)
+    return {"x": xOffset, "y": yOffset}
+
+peasant = hero.findByType("peasant")[0]
+soldiers = hero.findByType("soldier")
+# Sử dụng findByType để lấy một dàn chiến binh của em.
+while True:
+    # Sử dụng vòng lặp for để lặp qua range(len(soldiers)).
+    for index in range(len(soldiers)):
+    # Tìm phần bù cho một chiến binh.
+        offset = findSoldierOffset(soldiers,index)
+    # Thêm offset.x và offset.y vào pos.x và pos.y của người nông dân.
+        moveTo = {"x":peasant.pos.x + offset.x,"y":peasant.pos.y + offset.y}
+    # Chỉ huy chiến binh di chuyển đến vị trí bù trừ mới.
+        hero.command(soldiers[index], 'move', moveTo)
+    # Hero nên theo kịp với người nông dân!
+    hero.move({"x": hero.pos.x + 0.2, "y": hero.pos.y})
