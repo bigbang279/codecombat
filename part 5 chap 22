@@ -6,19 +6,31 @@
 
 # Viên trung sĩ biết khoảng cách giữa các lều. 
 sergeant =  hero.findNearest(hero.findFriends())
+
+# Khoảng cách giữa các dấu X. 
 stepX = sergeant.tentDistanceX
 stepY = sergeant.tentDistanceY
-
+# (Biên dịch bởi Galaxy Education) Số lượng lều trại. 
 tentsInRow = 5
 tentsInColumn = 4
 
+# Điểm đánh dấu lều đầu tiên có tọa độ không đổi. 
 firstX = 10
 firstY = 14
 
-for y in range(firstY,stepY * tentsInColumn + stepY
-    ,stepY):
-        # Move at the marks near tents and say anything.
-    for x in range(firstX,stepX * tentsInRow + stepX
-    ,stepX):
+# Sử dụng các vòng lặp lồng nhau và thăm 20 lều. 
+# QUAN TRỌNG: di chuyển từng hàng sẽ nhanh hơn.
+for row in range(tentsInColumn):
+    y = firstY + row * stepY
+    for col in range(tentsInRow):
+        x = firstX + col * stepX
+        hero.moveXY(x, y)
+        hero.say("alarm")
+
+# Quay ngược lại từ lều cuối cùng về lều đầu tiên.
+for row in range(tentsInColumn-1, -1, -1):
+    y = firstY + row * stepY
+    for col in range(tentsInRow-1, -1, -1):
+        x = firstX + col * stepX
         hero.moveXY(x, y)
         hero.say("alarm")
